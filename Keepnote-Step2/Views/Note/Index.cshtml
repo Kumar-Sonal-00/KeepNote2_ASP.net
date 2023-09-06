@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Keepnote.Models.Note>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NoteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoteTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoteContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoteStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.NoteId })
+                @Html.ActionLink("Modify", "Edit", new { id = item.NoteId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
